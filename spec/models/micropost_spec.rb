@@ -3,10 +3,7 @@ require 'spec_helper'
 describe Micropost do
 
   let(:user) { FactoryGirl.create(:user) }
-  before do
-    # This code is not idiomatically correct.
-    @micropost = Micropost.new(content: "Lorem ipsum", user_id: user.id)
-  end
+  before { @micropost = user.microposts.build(content: "Lorem ipsum") }
   
   subject { @micropost }
 
