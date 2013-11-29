@@ -26,6 +26,14 @@ describe "Static pages" do
         end
       end
 
+      it "renders the user's micropost count" do
+        expect(page).to have_selector("span#micropost-count", text: "2 microposts")
+
+        user.microposts.first.destroy!
+        visit root_path
+        expect(page).to have_selector("span#micropost-count", text: "1 micropost")
+      end
+
       describe "follower/following counts" do
         let(:other_user) { FactoryGirl.create(:user) }
         before do
