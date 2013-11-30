@@ -3,7 +3,9 @@
   <aside class="span4">
     <section>
       <h1>
-        <%= gravatar_for @user %>
+        <% cache do %>
+          <%= gravatar_for @user %>
+        <% end %>
         <%= @user.name %>
       </h1>
     </section>

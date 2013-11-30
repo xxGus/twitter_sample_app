@@ -1,5 +1,7 @@
 <a href="<%= user_path(current_user) %>">
-  <%= gravatar_for current_user, size: 52 %>
+  <% cache do %>
+    <%= gravatar_for current_user, size: 52 %>
+  <% end %>
 </a>
 <h1>
   <%= current_user.name %>
